@@ -22,7 +22,7 @@ def predict(path):
 # Define page content
 def page_content():
     # Display page header
-    st.title("Wing Watch 🦜")
+    st.title("Wing Watch 🐦🔍")
 
     # Display file uploader widgets for image and audio files
     uploaded_image_file = st.file_uploader("Choose an image file", type=["jpg", "jpeg", "png"])
@@ -45,12 +45,13 @@ def page_content():
                     prediction = predict(f"test/{uploaded_image_file.name}")
                     details = find_details(prediction)
                     # Display the predicted class
+                    st.image(img, caption=prediction)
                     st.markdown(f"The predicted bird is: **{prediction}**", )
                     st.markdown(details)
             else:
                 st.error("Please upload an image or audio file")
-    else:
-        st.error("Please upload an image or audio file")
+    # else:
+    #     st.error("Please upload an image or audio file")
 
 # Run the app
 if __name__ == "__main__":
