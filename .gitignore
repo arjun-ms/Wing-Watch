@@ -2,4 +2,3 @@ venv
 test
 .env
 config.yaml
-hashed_pw.pkl
