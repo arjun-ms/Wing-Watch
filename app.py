@@ -49,7 +49,9 @@ def register_page():
     try:
         if authenticator.register_user('Register user', preauthorization=False):
             st.success('User registered successfully')
-            login_page()
+            with open('./config.yaml', 'w') as file:
+                yaml.dump(config, file, default_flow_style=False)
+            # login_page()
     except Exception as e:
         st.error(e)
         
