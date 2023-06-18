@@ -11,6 +11,7 @@ temp = pathlib.PosixPath
 pathlib.PosixPath = pathlib.WindowsPath
 
 from details import find_details
+from voice import audio_predict
 
 # Set page title
 st.set_page_config(page_title="Wing Watch")
@@ -88,7 +89,10 @@ def prediction_page():
                     st.image(img, caption=prediction)
                     st.markdown(f"The predicted bird is: **{prediction}**")
                     st.markdown(details)
-                
+                elif uploaded_audio_file is not None:
+                    prediction = audio_predict(uploaded_audio_file)
+                    st.markdown(f"The predicted bird is: **{prediction}**")
+                    
             else:
                 st.error("Please upload an image or audio file")
     else:
