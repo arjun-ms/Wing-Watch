@@ -92,8 +92,15 @@ def prediction_page():
                     st.markdown(f"The predicted bird is: **{prediction}**")
                     st.markdown(details)
                 elif uploaded_audio_file is not None:
+
+                    # Provide a play button for the audio file
+                    st.write("Play the audio:")
+                    st.audio(uploaded_audio_file, format='audio/ogg')
+
                     prediction = audio_predict(uploaded_audio_file)
+                    details = find_details(prediction)
                     st.markdown(f"The predicted bird is: **{prediction}**")
+                    st.markdown(details)
                     
             else:
                 st.error("Please upload an image or audio file")
